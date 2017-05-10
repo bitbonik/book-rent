@@ -1,0 +1,33 @@
+<%- model_class = Book -%>
+  
+<div class="page-header">
+  <h1> <%= @book.name %> </h1>
+</div>
+
+
+<div class="featured">
+  <%= image_tag @book.book_cover %>
+</div>
+
+<dl class="dl-horizontal">  
+  <dt><strong><%= model_class.human_attribute_name(:author) %>:</strong></dt>
+  <dd><%= @book.author %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
+  <dd><%= @book.price %></dd>
+</dl>
+
+<% if @book.categories.any? %>
+  <p>Categories: <%= render @book.categories %> </p>  
+<% end %>
+
+
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              books_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_book_path(@book), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              book_path(@book),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+

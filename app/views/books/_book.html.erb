@@ -1,0 +1,15 @@
+<% obj.each_slice(4) do |slice| %>
+  <div class="row books_row">
+  <% slice.each do |book| %>
+    <div class="col-md-3 book"> 
+      <%= link_to book_path(book) do %> 
+          <div class="cover">
+            <%= image_tag book.book_cover %>
+          </div>          
+          <p class="price"> $<%= book.price %> </p>
+          <p class="name"> <%= book.name %> </p>
+      <% end %>
+    </div>
+    <% end %>    
+  </div>
+<% end %>
