@@ -14,6 +14,10 @@
   <dd><%= @book.author %></dd>
   <dt><strong><%= model_class.human_attribute_name(:price) %>:</strong></dt>
   <dd><%= @book.price %></dd>
+  <% if @book.user %>
+  <dt><strong>Contact Info:</strong></dt>
+  <dd><%= @book.user.contactinfo %></dd>
+  <% end %>
 </dl>
 
 <% if @book.categories.any? %>
